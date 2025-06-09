@@ -1,0 +1,30 @@
+class Solution {
+    public int removeDuplicates(int[] nums) {
+        if (nums.length == 0) return 0;
+
+        int uniqueIndex = 0; // pointer for the position of unique elements
+
+        for (int i = 1; i < nums.length; i++) {
+            if (nums[i] != nums[uniqueIndex]) {
+                uniqueIndex++;
+                nums[uniqueIndex] = nums[i];  // update unique position
+            }
+        }
+        // length = last unique index + 1
+        return uniqueIndex + 1;
+    }
+
+    // Optional main to test:
+    public static void main(String[] args) {
+        Solution sol = new Solution();
+
+        int[] nums = {0,0,1,1,1,2,2,3,3,4};
+        int length = sol.removeDuplicates(nums);
+
+        System.out.println("New length: " + length);
+        System.out.print("Array after removing duplicates: ");
+        for (int i = 0; i < length; i++) {
+            System.out.print(nums[i] + " ");
+        }
+    }
+}
